@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+
+<head>
+    <title th:text="#{page.title.bikefit}"></title>
+</head>
+
+<body>
+    <!-- links.html melhorado seguindo padrões visuais -->
+    <div layout:fragment="corpo">
+
+        <div class="text-center mb-5">
+            <h1 class="display-6 fw-bold text-muted" th:text="#{links.titulo}"></h1>
+            <p class="text-muted" th:text="#{links.subtitulo}"></p>
+        </div>
+
+        <div th:if="${#lists.isEmpty(links)}" class="alert alert-info text-center">
+            Nenhum link cadastrado.
+        </div>
+
+        <div class="row g-4" th:each="l, stat : ${links}">
+            <div class="form-card p-3">
+                <h5 class="fw-bold mb-2" th:text="*{l.descricao}"></h5>
+                <a th:href="${l.link}" target="_blank" rel="noopener noreferrer"
+                    class="text-decoration-none text-primary">
+                    <i class="bi bi-link-45deg"></i> <span th:text="*{l.link}"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

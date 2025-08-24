@@ -1,0 +1,29 @@
+<!-- index.html melhorado -->
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+
+<head>
+    <title th:text="#{page.title.bikefit}"></title>
+</head>
+
+<body>
+    <div layout:fragment="corpo">
+        <body class="text-center">
+            <div>
+                <h2 class="h3 mb-3 font-weight-normal">
+                    <i class="oi oi-warning"></i>
+                    <span th:text="${status}"></span>
+                </h2>
+                <h3 th:text="${error}"></h3>
+                <div>
+                    <span th:text="${message}"></span><br /><br />
+                    <a class="btn btn-primary" type="button" href="javascript:history.back()">Voltar a página
+                        anterior</a>
+                </div>
+            </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+
+<head>
+    <title th:text="#{page.title.bikefit}"></title>
+</head>
+
+<body>
+    <!-- mural.html melhorado com listagem de mensagens estilizada -->
+    <div layout:fragment="corpo">
+
+        <div class="text-center mb-5">
+            <h1 class="display-6 fw-bold text-muted" th:text="#{mural.titulo}"></h1>
+            <p class="text-muted" th:text="#{mural.subtitulo}"></p>
+        </div>
+
+        <form method="POST" th:action="@{/mural/salvar}" th:object="${mural}"
+            class="row g-3 justify-content-center mb-4">
+            <div class="col-md-8">
+                <div class="form-card p-4">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label fw-bold" th:text="#{mural.nome}"></label>
+                        <input type="text" name="nome" id="nome" class="form-control form-control-lg"
+                            th:placeholder="#{mural.digite-seu-nome}" required>
+                    </div>
+                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}">
+                        <span class="text-danger" th:errors="*{nome}"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label fw-bold" th:text="#{mural.email}"></label>
+                        <input type="text" name="email" id="email" class="form-control form-control-lg"
+                            th:placeholder="#{mural.digite-seu-email}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mensagem" class="form-label fw-bold" th:text="#{mural.mensagem}"></label>
+                        <textarea cols="40" rows="5" name="mensagem" id="mensagem" class="form-control form-control-lg"
+                            th:placeholder="#{mural.digite-sua-mensagem}" required></textarea>
+                    </div>
+                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('mensagem')}">
+                        <span class="text-danger" th:errors="*{mensagem}"></span>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg" th:text="#{mural.botao-inserir}"></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div th:if="${paginaDeMensagens.empty}" class="alert alert-info text-center">
+            <span th:text="#{mural.nenhuma-mensagem}"></span>
+        </div>
+        <div class="row g-4" th:unless="${paginaDeMensagens.empty}">
+            <div class="col-12" th:each="m : ${paginaDeMensagens.content}">
+                <div class="form-card p-3">
+                    <p class="mb-2" th:text="${m.mensagem}"></p>
+                    <div class="d-flex justify-content-between align-items-center border-top pt-2 mt-2">
+                        <div>
+                            <span class="fw-bold" th:text="${m.nome}"></span>
+                        </div>
+                        <small class="text-muted"
+                            th:text="${#temporals.format(m.createdAt, 'dd/MM/yyyy HH:mm')}"></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav aria-label="Paginação do Mural" th:if="${paginaDeMensagens.totalPages > 1}"
+            class="mt-4 d-flex justify-content-center">
+            <ul class="pagination">
+
+                <li class="page-item" th:classappend="${paginaDeMensagens.first} ? 'disabled'">
+                    <a class="page-link" th:href="@{/mural(page=${paginaDeMensagens.number - 1})}">Anterior</a>
+                </li>
+
+                <li class="page-item" th:each="i : ${#numbers.sequence(0, paginaDeMensagens.totalPages - 1)}"
+                    th:classappend="${i == paginaDeMensagens.number} ? 'active'">
+                    <a class="page-link" th:href="@{/mural(page=${i})}" th:text="${i + 1}"></a>
+                </li>
+
+                <li class="page-item" th:classappend="${paginaDeMensagens.last} ? 'disabled'">
+                    <a class="page-link" th:href="@{/mural(page=${paginaDeMensagens.number + 1})}">Próximo</a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+</body>
+
+</html>

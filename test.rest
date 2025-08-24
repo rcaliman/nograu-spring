@@ -1,0 +1,71 @@
+POST http://localhost:8080/api/bikefit
+
+{
+    "cavalo": 72,
+    "esterno": 100,
+    "braco": 70,
+    "email": "rcaliman@gmail.com"
+}
+
+###
+
+GET http://localhost:8080/api/bikefit?email=rcaliman@gmail.com
+
+###
+GET http://localhost:8080/api/bikefit/totalDia
+
+###
+POST http://localhost:8080/api/mural
+
+{
+    "nome": "Rodrigo Caliman",
+    "email": "rcaliman@gmail.com",
+    "mensagem": "teste de mensagem"
+}
+
+###
+GET http://localhost:8080/api/mural
+
+###
+GET http://localhost:8080/api/mural?page=1
+
+###
+POST http://localhost:8080/api/links
+
+{
+    "link": "http://www.bol.com.br",
+    "descricao": "Brasil Online"
+}
+
+###
+GET http://localhost:8080/api/links
+
+### PCD
+GET http://localhost:8080/api/banco/download_csv
+
+###
+GET http://localhost:8080/api/banco/salva_bancos
+
+###
+GET http://localhost:8080/api/banco?codigo=01
+
+###
+DELETE http://localhost:8080/api/banco/apaga_bancos
+
+### TAXA DE JUROS
+POST http://localhost:8080/api/pcd/calcular
+
+{
+    "codigoBanco": 1,
+    "proximaParcela": "2025-09-01",
+    "ultimaParcela": "2031-06-01",
+    "quantidadeParcelas": 84,
+    "valorParcela": 142.30,
+    "valorEmprestado": 6443.04
+}
+
+###
+GET http://localhost:8080/api/pcd/listar
+
+###
+GET http://localhost:8080/api/pcd/conta_calculos

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+
+<head>
+    <title th:text="#{page.title.bikefit}"></title>
+</head>
+
+<body>
+    <div layout:fragment="corpo">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h4 fw-bold text-muted" th:text="#{pcd.calculos-do-dia.titulo}"></h1>
+            <a th:href="@{/pcd}" class="btn btn-sm btn-outline-secondary" th:text="#{pcd.voltar}"></a>
+        </div>
+
+        <div class="container">
+            <div th:each="emprestimo, stat : ${emprestimos}" class="pb-3">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr th:if="${emprestimo.banco}">
+                            <th class="bg-secondary text-white" colspan="2" th:text="${emprestimo.banco.nomeReduzido}">
+                            </th>
+                        </tr>
+                        <tr th:if="${emprestimo.banco == null}">
+                            <th class="bg-secondary text-white" colspan="2" th:text="#{pcd.banco-nao-localizado}"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="w-50"><strong th:text="#{pcd.proxima-parcela}"></strong></td>
+                            <td th:text="${#temporals.format(emprestimo.proximaParcela, 'dd/MM/yyyy')}"></td>
+                        </tr>
+                        <tr>
+                            <td><strong th:text="#{pcd.ultima-parcela}"></strong></td>
+                            <td th:text="${#temporals.format(emprestimo.ultimaParcela, 'dd/MM/yyyy')}"></td>
+                        </tr>
+                        <tr>
+                            <td><strong th:text="#{pcd.quantidade-de-parcelas}"></strong></td>
+                            <td th:text="${emprestimo.quantidadeParcelas}"></td>
+                        </tr>
+                        <tr>
+                            <td><strong th:text="#{pcd.valor-emprestado}"></strong></td>
+                            <td
+                                th:text="'R$ ' + ${#numbers.formatDecimal(emprestimo.valorEmprestado, 1, 'POINT', 2, 'COMMA')}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong th:text="#{pcd.taxa-de-juros-mensal}"></strong></td>
+                            <td th:text="${#numbers.formatDecimal(emprestimo.taxaJuros * 100, 1, 2, 'COMMA')} + '%'">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong th:text="#{pcd.meses-restantes}">M</strong></td>
+                            <td th:text="${emprestimo.mesesEmSer}"></td>
+                        </tr>
+                        <tr>
+                            <td><strong th:text="#{pcd.saldo-devedor}"></strong></td>
+                            <td
+                                th:text="'R$ ' + ${#numbers.formatDecimal(T(java.lang.Math).abs(emprestimo.saldoDevedor), 1, 'POINT', 2, 'COMMA')}">
+                            </td>
+                        </tr>
+                        <tr th:if="${emprestimo.banco}">
+                            <td><strong th:text="#{pcd.codigo-do-banco}"></strong></td>
+                            <td th:text="${emprestimo.banco.numeroCodigo}"></td>
+                        </tr>
+                        <tr th:if="${emprestimo.banco}">
+                            <td><strong th:text="#{pcd.ispb}"></strong></td>
+                            <td th:text="${emprestimo.banco.ispb}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

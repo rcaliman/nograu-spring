@@ -1,0 +1,133 @@
+<!-- index.html melhorado -->
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+
+<head>
+    <title th:text="#{page.title.bikefit}"></title>
+</head>
+
+<body>
+    <div layout:fragment="corpo">
+        <div class="text-center mb-5">
+            <h1 class="display-6 fw-bold text-muted" th:text="#{bikefit.titulo}"></h1>
+            <p class="lead" th:text="#{bikefit.subtitulo}"></p>
+            <p class="text-muted" th:text="#{bikefit.subtitulo.exemplo}"></p>
+        </div>
+
+        <form method="POST" th:action="@{/bikefit/processar-bikefit}" th:object="${bikefit}">
+
+            <div class="form-card row g-3 align-items-center">
+                <div class="col-md-12 text-start">
+                    <i class="bi bi-caret-right"></i></i>
+                    <label for="cavalo" class="form-label fw-bold fs-5 text-secondary"
+                        th:text="#{form.cavalo.label}"></label>
+                </div>
+                <div class="col-md-3 text-center">
+                    <img th:src="@{/img/cavalo.png}" class="img-fluid rounded mt-2 border" alt="Medida do Cavalo">
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group">
+
+                        <input type="number" step="0.1" th:field="*{cavalo}" class="form-control form-control-lg" aria-describedby="helpCavalo"
+                            th:classappend="${#fields.hasErrors('cavalo')} ? 'is-invalid'" required>
+                        <span class="input-group-text">cm</span>
+
+                        <div class="invalid-feedback">
+                            <span th:errors="*{cavalo}"></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <p id="helpCavalo" class="form-text p-3" th:text="#{form.cavalo.help}"></p>
+                </div>
+            </div>
+
+            <div class="form-card row g-3 align-items-center">
+                <div class="col-md-12 text-start">
+                    <i class="bi bi-caret-right"></i></i>
+                    <label for="esterno" class="form-label fw-bold fs-5  text-secondary"
+                        th:text="#{form.esterno.label}"></label>
+                </div>
+                <div class="col-md-3 text-center">
+                    <img th:src="@{/img/esterno.png}" class="img-fluid rounded mt-2 border" alt="Medida do Esterno">
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <input type="number" step="0.1" th:field="*{esterno}" class="form-control form-control-lg" aria-describedby="helpEsterno"
+                            th:classappend="${#fields.hasErrors('esterno')} ? 'is-invalid'" required>
+                        <span class="input-group-text">cm</span>
+
+                        <div class="invalid-feedback">
+                            <span th:errors="*{esterno}"></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <p id="helpEsterno" class="form-text" th:text="#{form.esterno.help}"></p>
+                </div>
+            </div>
+
+            <div class="form-card row g-3 align-items-center">
+                <div class="col-md-12 text-start">
+                    <i class="bi bi-caret-right"></i></i>
+                    <label for="braco" class="form-label fw-bold fs-5 text-secondary" th:text="#{form.braco.label}"></label>
+                </div>
+                <div class="col-md-3 text-center">
+                    <img th:src="@{/img/braco.png}" class="img-fluid rounded mt-2 border" alt="Medida do Braço">
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group">
+
+                        <input type="number" step="0.1" th:field="*{braco}" class="form-control form-control-lg" aria-describedby="helpBraco"
+                            th:classappend="${#fields.hasErrors('braco')} ? 'is-invalid'" required>
+                        <span class="input-group-text">cm</span>
+
+                        <div class="invalid-feedback">
+                            <span th:errors="*{braco}"></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <p id="helpBraco" class="form-text" th:text="#{form.braco.help}"></p>
+                </div>
+            </div>
+
+            <div class="form-card row g-3 align-items-center">
+                <div class="col-md-3 text-center">
+                    <label for="email" class="form-label fw-bold fs-5 text-secondary" 
+                        th:text="#{form.email.label}"></label>
+                </div>
+                <div class="col-md-5">
+                    <input type="email" th:field="*{email}" class="form-control form-control-lg"
+                        aria-describedby="helpEmail" th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'" required>
+                    <div class="invalid-feedback">
+                        <span th:errors="*{email}"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <p id="helpEmail" class="form-text" th:text="#{form.email.help}"></p>
+                </div>
+
+            </div>
+
+            <div class="alert alert-info mt-4" role="alert">
+                <h4 class="alert-heading d-flex align-items-center"><i class="bi bi-info-circle me-2"></i> <span
+                        th:text="#{form.importante.titulo}"></span></h4>
+                <p th:text="#{form.importante.texto}"></p>
+                <hr>
+                <p class="mb-0 fst-italic" th:text="#{form.importante.nota}"></p>
+            </div>
+
+            <div class="d-grid gap-2 mt-4">
+                <button class="btn btn-primary btn-lg" type="submit" th:text="#{form.botao.enviar}"></button>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>

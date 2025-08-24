@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+
+<head>
+    <title th:text="#{page.title.bikefit}"></title>
+</head>
+
+<body>
+    <!-- resultado.html melhorado com padrão visual do index e formatação de 2 casas decimais -->
+    <div layout:fragment="corpo">
+
+        <div class="text-center mb-5">
+            <h1 class="display-6 fw-bold text-muted" th:text="#{resultado.titulo}"></h1>
+            <p class="lead" th:text="#{resultado.subtitulo}"></p>
+        </div>
+
+        <!-- Medidas iniciais -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-3 form-card text-center">
+                <h5 class="fw-bold mb-2" th:text="#{resultado.cavalo}"></h5>
+                <div class="fs-4 mb-0 text-orange fw-bold"
+                    th:text="${#numbers.formatDecimal(bikefit.cavalo, 0, 'COMMA', 1, 'POINT')}"></div>
+            </div>
+            <div class="col-md-3 form-card text-center">
+                <h5 class="fw-bold mb-2" th:text="#{resultado.esterno}"></h5>
+                <div class="fs-4 mb-0 text-orange fw-bold"
+                    th:text="${#numbers.formatDecimal(bikefit.esterno, 0, 'COMMA', 1, 'POINT')}"></div>
+            </div>
+            <div class="col-md-3 form-card text-center">
+                <h5 class="fw-bold mb-2" th:text="#{resultado.braco}"></h5>
+                <div class="fs-4 mb-0 text-orange fw-bold"
+                    th:text="${#numbers.formatDecimal(bikefit.braco, 0, 'COMMA', 1, 'POINT')}"></div>
+            </div>
+            <div class="col-md-3 form-card text-center">
+                <h5 class="fw-bold mb-2" th:text="#{resultado.tronco}"></h5>
+                <div class="fs-4 mb-0 text-orange fw-bold"
+                    th:text="${#numbers.formatDecimal(bikefit.tronco, 0, 'COMMA', 1, 'POINT')}"></div>
+            </div>
+        </div>
+
+        <!-- Resultados -->
+        <div class="form-card mb-4 text-center">
+            <img th:src="@{/img/seattube.gif}" class="img-fluid rounded border mb-3" alt="Tamanho do quadro">
+            <h5 class="fw-bold" th:text="#{resultado.tamanho-do-seu-quadro}"></h5>
+
+            <div th:text="#{resultado.road}"></div>
+            <div class="fs-4 mb-3 text-orange fw-bold"
+                th:text="${#numbers.formatDecimal(bikefit.quadroSpeed, 0, 'COMMA', 1, 'POINT')}"></div>
+
+
+            <div th:text="#{resultado.mtb}"></div>
+            <div class="fs-4 mb-3 text-orange fw-bold"
+                th:text="${#numbers.formatDecimal(bikefit.quadroMtb, 0, 'COMMA', 1, 'POINT')}"></div>
+            <div class="text-muted" th:text="#{resultado.tamanho-do-seu-quadro.descricao}"></div>
+        </div>
+
+        <div class="form-card mb-4 text-center">
+            <img th:src="@{/img/seat.gif}" class="img-fluid rounded border mb-3" alt="Altura do selim">
+            <h5 class="fw-bold" th:text="#{resultado.altura-do-selim}"></h5>
+            <div class="fs-4 mb-3 text-orange fw-bold"
+                th:text="${#numbers.formatDecimal(bikefit.alturaSelim, 0, 'COMMA', 1, 'POINT')}"></div>
+            <div class="text-muted" th:text="#{resultado.altura-do-selim.descricao}"></div>
+        </div>
+
+        <div class="form-card mb-4 text-center">
+            <img th:src="@{/img/toptube.gif}" class="img-fluid rounded border mb-3" alt="Top Tube efetivo">
+            <h5 class="fw-bold" th:text="#{resultado.top-tube-efetivo}"></h5>
+            <div class="fs-4 mb-3 text-orange fw-bold"
+                th:text="${#numbers.formatDecimal(bikefit.topTubeEfetivo, 0, 'COMMA', 1, 'POINT')}">
+            </div>
+            <div class="text-muted" th:text="#{resultado.top-tube-efetivo.descricao}"></div>
+        </div>
+        <div class="alert alert-secondary" role="alert">
+            <span th:text="#{resultado.observacao}"></span>
+        </div>
+        <div class="alert alert-secondary" role="alert">
+            <p><span th:text="#{resultado.observacao-2}"></span></p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

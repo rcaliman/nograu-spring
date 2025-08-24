@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+
+<head>
+    <title th:text="#{page.title.bikefit}"></title>
+</head>
+
+<body>
+    <div layout:fragment="corpo">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h4 fw-bold text-muted" th:text="#{pcd.dados-do-banco}"></h1>
+            <a th:href="@{/pcd}" class="btn btn-sm btn-outline-secondary" th:text="#{pcd.voltar}"></a>
+        </div>
+        <div class="container">
+            <div>
+                <h3 class="mt-5 mb-3" th:text="#{pcd.informacoes-bancarias}"></h3>
+                <div class="alert alert-danger" role="alert" th:if="${erro}">
+                    <strong th:text="#{pcd.atencao.a}"></strong><span th:text="#{pcd.banco-nao-encontrado}"></span>
+                </div>
+                <div th:if="${banco}">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                            <tr>
+                                <td class="w-50"><strong th:text="#{pcd.banco}"></strong></td>
+                                <td th:text="${banco.nomeReduzido}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong th:text="#{pcd.codigo-do-banco}"></strong></td>
+                                <td th:text="${banco.numeroCodigo}"></td>
+                            </tr>
+                            <tr>
+                                <td><strong th:text="#{pcd.ispb}"></strong></td>
+                                <td th:text="${banco.ispb}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

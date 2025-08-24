@@ -1,0 +1,115 @@
+        body {
+            background-color: #f8f9fa;
+        }
+
+        main.container-lg {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-card {
+            border: 1px solid #dee2e6;
+            border-radius: .75rem;
+            padding: 1.5rem;
+            background: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-card img {
+            max-height: 200px;
+            object-fit: contain;
+        }
+
+        .text-orange {
+            color: #FFA500 !important;
+            /* Um tom de laranja popular. Você pode usar qualquer código de cor. */
+        }
+
+        .input-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: flex-start;
+            align-items: flex-end;
+        }
+
+        .container-pcd,
+        .container-ispb {
+            background-color: #e2e3e5;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .container-ispb {
+            width: 100%;
+            /* Usamos 90% em vez de 100% para não colar nas bordas da tela */
+            margin-top: 2.5rem;
+            margin-left: 0;
+            /* Estes dois comandos centralizam o container */
+            margin-right: auto;
+            /* na horizontal. */
+        }
+
+        @media (min-width: 992px) {
+            .container-ispb {
+                width: 50%;
+                /* Em telas grandes, o container ocupará metade da tela. */
+            }
+        }
+
+        /* Novo: Estilo para a área inferior com texto e botão */
+        .input-bar-text-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            /* Garante que quebre a linha em telas pequenas */
+            gap: 1rem;
+        }
+
+        .input-field {
+            flex: 0 0 15%;
+            min-width: 120px;
+        }
+
+        .input-field-ispb {
+            /* O campo agora pode ocupar mais espaço, já que o botão foi movido */
+            flex: 1 1 100%;
+            min-width: 150px;
+        }
+
+        .label {
+            background-color: #6c757d;
+            display: inline-block;
+            padding: .35em .65em;
+            font-size: .75em;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: .25rem;
+        }
+
+        .help-text {
+            font-size: 0.8em;
+            color: #6b7378;
+        }
+
+        @media (max-width: 768px) {
+
+            .input-field,
+            .input-field-ispb {
+                flex: 0 0 100%;
+            }
+
+            .input-bar {
+                align-items: initial;
+            }
+        }

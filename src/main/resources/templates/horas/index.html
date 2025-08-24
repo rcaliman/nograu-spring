@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+
+<head>
+    <title th:text="#{page.title.bikefit}"></title>
+</head>
+
+<body>
+    <div layout:fragment="corpo">
+        <div class="container min-vh-50 d-flex align-items-center">
+            <div class="row justify-content-center w-100">
+                <div class="col-lg-6">
+                    <div class="text-center mb-4">
+                        <h1 class="display-5 fw-bold text-primary" th:text="#{horas.titulo}"></h1>
+                        <p class="text-muted" th:text="#{horas.subtitulo}"></p>
+                    </div>
+
+                    <div class="card shadow-lg border-0 rounded-4">
+                        <div class="card-body p-4">
+                            <form method="POST" th:action="@{/horas/calcular}" th:object="${horas}" class="row g-3">
+
+                                <div class="form-floating col-12">
+                                    <input type="time" class="form-control" id="horaEntrada" placeholder="00:00"
+                                        th:field="*{horaEntrada}">
+                                    <label for="horaEntrada" th:text="#{horas.entrada}"></label>
+                                    <div class="text-danger small" th:if="${#fields.hasErrors('horaEntrada')}"
+                                        th:errors="*{horaEntrada}"></div>
+                                </div>
+
+                                <div class="form-floating col-12">
+                                    <input type="time" class="form-control" id="horaAlmoco" placeholder="00:00"
+                                        th:field="*{horaAlmoco}">
+                                    <label for="horaAlmoco" th:text="#{horas.almoco}"></label>
+                                    <div class="text-danger small" th:if="${#fields.hasErrors('horaAlmoco')}"
+                                        th:errors="*{horaAlmoco}"></div>
+                                </div>
+
+                                <div class="form-floating col-12">
+                                    <input type="time" class="form-control" id="horaRetornoAlmoco" placeholder="00:00"
+                                        th:field="*{horaRetornoAlmoco}">
+                                    <label for="horaRetornoAlmoco" th:text="#{horas.retorno-almoco}"></label>
+                                    <div class="text-danger small" th:if="${#fields.hasErrors('horaRetornoAlmoco')}"
+                                        th:errors="*{horaRetornoAlmoco}"></div>
+                                </div>
+
+                                <div class="form-floating col-12">
+                                    <input type="time" class="form-control" id="cargaHoraria" placeholder="00:00"
+                                        th:field="*{cargaHoraria}">
+                                    <label for="cargaHoraria" th:text="#{horas.carga-horaria}"></label>
+                                    <div class="text-danger small" th:if="${#fields.hasErrors('cargaHoraria')}"
+                                        th:errors="*{cargaHoraria}"></div>
+                                </div>
+
+                                <div class="d-grid mt-3">
+                                    <button class="btn btn-primary btn-lg rounded-pill shadow-sm" type="submit"
+                                        th:text="#{horas.botao-calcular}"></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center mt-2" th:if="${horaSaida}">
+                        <div class="col-12">
+                            <div class="alert alert-success alert-dismissible fade show shadow-sm text-center"
+                                role="alert">
+                                <h4 class="alert-heading" th:text="#{horas.saida}"></h4>
+                                <p class="display-6 fw-bold mb-0" th:text="${horaSaida}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

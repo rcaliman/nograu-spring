@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+
+<head>
+    <title th:text="#{page.title.bikefit}"></title>
+</head>
+
+<body>
+    <div layout:fragment="corpo">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h4 fw-bold text-muted" th:text="#{pcd.titulo}"></h1>
+            <a th:href="@{/pcd/calculos-anteriores}" class="btn btn-sm btn-outline-secondary"
+                th:text="#{pcd.calculos-do-dia}"></a>
+        </div>
+        <div class="container-pcd">
+            <div class="alert alert-danger" role="alert" th:if="${erro}">
+                <strong th:text="#{pcd.atencao.a}"></strong>&nbsp;<span th:text="${erro}"></span>
+            </div>
+            <form method="POST" th:action="@{/pcd/processar-calculo}" th:object="${emprestimo}" id="form-calculo">
+                <div class="input-field d-block d-flex mb-2"><em class="text-secondary"
+                        th:text="#{pcd.contador}"></em>&nbsp;<em class="text-secondary" th:text="${contador}"></em>
+                </div>
+                <div class="input-bar">
+                    <div class="input-field">
+                        <span class="help-text"><em th:text="#{pcd.exemplo}"></em> 341</span>
+                        <input type="text" th:field="*{codigoBanco}" id="codigoBanco" class="form-control" required>
+                        <span class="label" th:text="#{pcd.codigo-do-banco}"></span>
+                    </div>
+                    <div class="input-field">
+                        <span class="help-text"><em th:text="#{pcd.exemplo}"></em> 05112025</span>
+                        <input type="text" th:field="*{proximaParcela}" id="proximaParcela" class="form-control"
+                            required maxlength="10">
+                        <span class="label" th:text="#{pcd.proxima-parcela}"></span>
+                    </div>
+                    <div class="input-field">
+                        <span class="help-text"><em th:text="#{pcd.exemplo}"></em> 05112029</span>
+                        <input type="text" th:field="*{ultimaParcela}" id="ultimaParcela" class="form-control" required
+                            maxlength="10">
+                        <span class="label" th:text="#{pcd.ultima-parcela}"></span>
+                    </div>
+                    <div class="input-field">
+                        <span class="help-text"><em th:text="#{pcd.exemplo}"></em> 73</span>
+                        <input type="number" th:field="*{quantidadeParcelas}" id="quantidadeParcelas"
+                            class="form-control" required>
+                        <span class="label" th:text="#{pcd.qtd-parcelas}"></span>
+                    </div>
+                    <div class="input-field">
+                        <span class="help-text"><em th:text="#{pcd.exemplo}"></em> 20307</span>
+                        <input type="text" th:field="*{valorParcela}" id="valorParcela" class="form-control" required>
+                        <span class="label" th:text="#{pcd.valor-parcela}"></span>
+                    </div>
+
+                    <div class="input-field">
+                        <span class="help-text"><em th:text="#{pcd.exemplo}"></em> 749512</span>
+                        <input type="text" th:field="*{valorEmprestado}" id="valorEmprestado" class="form-control"
+                            required>
+                        <span class="label" th:text="#{pcd.valor-emprestado}"></span>
+                    </div>
+                </div>
+                <div class="input-bar-text-area d-block">
+                    <div class="input-bar-text">
+                        <b th:text="#{pcd.atencao.a}"></b> <em th:text="#{pcd.atencao.b}"></em>
+                    </div>
+                    <div class="input-bar-button mt-3">
+                        <button type="submit" class="btn btn-primary" th:text="#{pcd.calcular}"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="container-ispb">
+            <form method="POST" th:action="@{/pcd/buscar-banco}" th:object="${banco}">
+                <div class="input-bar">
+                    <div class="input-field-ispb">
+                        <span class="help-text"><em th:text="#{pcd.exemplo}"></em> 341</span>
+                        <input type="number" th:field="*{numeroCodigo}" id="numeroCodigo" class="form-control" required>
+                        <span class="label" th:text="#{pcd.codigo-do-banco}"></span>
+                    </div>
+                </div>
+                <div class="input-bar-text-area d-block">
+                    <div class="input-bar-text-ispb">
+                        <span class="fw-bold" th:text="#{pcd.busca-banco}"></span>
+                        <small class="d-block"
+                            th:text="|#{pcd.data-base-bancos} ${#temporals.format(dataArquivo, 'dd/MM/yyyy')}|"></small>
+                    </div>
+                    <div class="input-bar-button mt-3">
+                        <button type="submit" class="btn btn-primary" th:text="#{pcd.consultar}"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
