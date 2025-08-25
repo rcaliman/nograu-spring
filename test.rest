@@ -15,6 +15,17 @@ GET http://localhost:8080/api/bikefit?email=rcaliman@gmail.com
 GET http://localhost:8080/api/bikefit/totalDia
 
 ###
+GET http://localhost:8080/api/bikefit/calculosDoDia
+
+
+###
+POST http://localhost:8080/api/bikefit/teste
+
+{
+    "questão": "você consegue ler essa pergunta gemini?"
+}
+
+###
 POST http://localhost:8080/api/mural
 
 {

@@ -3,9 +3,9 @@ package nograu.site.bikefit.model;
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import groovy.transform.ToString;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -19,13 +19,17 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import nograu.site.bikefit.dto.BikeFitDtoRequest;
 
 @Entity
 @Table(name = "tb_bikefit")
 @Getter
 @Setter
+@ToString
 @EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor
 public class BikeFit {
 
     @Id
@@ -51,6 +55,8 @@ public class BikeFit {
     private Double braco;
 
     @Column(name = "tronco", nullable = true)
+    @Min(value = 3, message = "{bikefit.MinMax.message}")
+    @Max(value = 250, message = "{bikefit.MinMax.message}")
     private Double tronco;
 
     @Column(name = "email", nullable = false)
@@ -73,9 +79,5 @@ public class BikeFit {
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
-
-    @LastModifiedDate
-    @Column(name = "updated_at", nullable = true, updatable = true)
-    private LocalDateTime updatedAt;
     
 }

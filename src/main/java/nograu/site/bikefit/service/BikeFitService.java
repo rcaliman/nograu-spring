@@ -45,4 +45,10 @@ public class BikeFitService {
         return bikeFitRepository.countByCreatedAtBetween(inicioPeriodo, finalPeriodo);
     }
 
+    public List<BikeFit> calculosDoDia() {
+        var inicioPeriodo = LocalDate.now().atStartOfDay();
+        var finalPeriodo = LocalDate.now().plusDays(1).atStartOfDay();
+        return bikeFitRepository.findByCreatedAtBetweenOrderByCreatedAtDesc(inicioPeriodo, finalPeriodo);
+    }
+
 }
