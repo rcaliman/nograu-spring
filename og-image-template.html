@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Open Graph - No Grau</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .og-image {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .og-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 40px;
+        }
+        .logo {
+            font-size: 80px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .bike-icon {
+            font-size: 120px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+        .tagline {
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            font-size: 28px;
+            opacity: 0.9;
+            font-weight: 300;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .badge {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            text-shadow: none;
+        }
+        .instructions {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .instructions h2 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        .instructions ol {
+            line-height: 1.8;
+            color: #333;
+        }
+        .instructions code {
+            background: #f5f5f5;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+        .tip {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .tip strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; color: #333;">Template de Open Graph Image - No Grau</h1>
+
+        <div class="og-image" id="og-image">
+            <div class="badge">Desde 2010 🏆</div>
+            <div class="content">
+                <div class="bike-icon">🚴</div>
+                <div class="logo">NO GRAU</div>
+                <div class="tagline">Bikefit Virtual com IA</div>
+                <div class="subtitle">Encontre as medidas perfeitas para sua bike</div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h2>📸 Como Criar sua Imagem Open Graph</h2>
+
+            <div class="tip">
+                <strong>💡 Dica Rápida:</strong> Você pode usar este template como base e fazer um print screen da área destacada acima! Use a ferramenta de recorte do Windows/Mac ou qualquer ferramenta de captura de tela.
+            </div>
+
+            <h3>Opção 1: Screenshot deste Template (Mais Rápido)</h3>
+            <ol>
+                <li>Abra este arquivo HTML no navegador em tela cheia (F11)</li>
+                <li>Ajuste o zoom para 100%</li>
+                <li>Use uma ferramenta de screenshot para capturar apenas a área do card roxo</li>
+                <li>
+                    <strong>Windows:</strong> Use a Ferramenta de Recorte ou Win + Shift + S<br>
+                    <strong>Mac:</strong> Use Cmd + Shift + 4<br>
+                    <strong>Linux:</strong> Use Flameshot ou Screenshot
+                </li>
+                <li>Salve a imagem como <code>og-image.png</code></li>
+                <li>Redimensione para exatamente 1200x630 pixels se necessário</li>
+                <li>Copie para <code>src/main/resources/static/img/og-image.png</code></li>
+            </ol>
+
+            <h3>Opção 2: Usar Canva (Recomendado para Personalização)</h3>
+            <ol>
+                <li>Acesse <a href="https://www.canva.com/" target="_blank">Canva.com</a></li>
+                <li>Crie um design customizado com dimensões <strong>1200 x 630 px</strong></li>
+                <li>Use o template acima como inspiração:
+                    <ul>
+                        <li>Fundo com gradiente (roxo/azul ou suas cores)</li>
+                        <li>Logo ou nome "No Grau" em destaque</li>
+                        <li>Ícone de bicicleta 🚴</li>
+                        <li>Texto: "Bikefit Virtual com IA"</li>
+                        <li>Subtítulo explicativo</li>
+                    </ul>
+                </li>
+                <li>Exporte como PNG</li>
+                <li>Salve como <code>og-image.png</code></li>
+            </ol>
+
+            <h3>Opção 3: Usar Figma (Para Designers)</h3>
+            <ol>
+                <li>Acesse <a href="https://www.figma.com/" target="_blank">Figma.com</a></li>
+                <li>Crie um frame de 1200 x 630 px</li>
+                <li>Use os elementos visuais sugeridos acima</li>
+                <li>Exporte como PNG em 2x para melhor qualidade</li>
+            </ol>
+
+            <h3>Opção 4: Ferramenta Online de Open Graph</h3>
+            <ol>
+                <li>Acesse <a href="https://www.opengraph.xyz/" target="_blank">OpenGraph.xyz</a></li>
+                <li>Use o gerador automático</li>
+                <li>Personalize com suas cores e textos</li>
+                <li>Baixe a imagem gerada</li>
+            </ol>
+
+            <h3>🎨 Customização do Template</h3>
+            <p>Você pode editar este arquivo HTML para personalizar:</p>
+            <ul>
+                <li><strong>Cores do gradiente:</strong> Linha 20 - <code>background: linear-gradient(...)</code></li>
+                <li><strong>Textos:</strong>
+                    <ul>
+                        <li>Logo: Linha 67</li>
+                        <li>Tagline: Linha 68</li>
+                        <li>Subtitle: Linha 69</li>
+                        <li>Badge: Linha 66</li>
+                    </ul>
+                </li>
+                <li><strong>Ícone:</strong> Linha 65 - Troque 🚴 por outro emoji ou imagem</li>
+            </ul>
+
+            <h3>✅ Checklist de Qualidade</h3>
+            <ul style="list-style: none; padding-left: 0;">
+                <li>✓ Dimensões exatas: 1200 x 630 pixels</li>
+                <li>✓ Formato: PNG ou JPG</li>
+                <li>✓ Tamanho do arquivo: Menos de 300KB (recomendado)</li>
+                <li>✓ Texto legível mesmo em tamanho pequeno</li>
+                <li>✓ Cores contrastantes</li>
+                <li>✓ Logo/nome da marca visível</li>
+                <li>✓ Sem texto muito pequeno (mínimo 28px)</li>
+            </ul>
+
+            <h3>📁 Onde Salvar</h3>
+            <p>Após criar sua imagem, salve em:</p>
+            <code style="display: block; padding: 15px; background: #f8f9fa; border-radius: 4px; margin: 10px 0;">
+                src/main/resources/static/img/og-image.png
+            </code>
+            <p>E crie também os favicons no mesmo diretório.</p>
+
+            <div class="tip">
+                <strong>⚡ Dica Pro:</strong> Use cores que representem sua marca e mantenha o design simples e limpo. Lembre-se que a imagem será vista em tamanhos pequenos em previews de redes sociais!
+            </div>
+        </div>
+
+        <div class="instructions" style="margin-top: 20px; background: #f8f9fa;">
+            <h2>🖼️ Para os Favicons</h2>
+            <p>Use estas ferramentas para gerar favicons automaticamente a partir de uma imagem ou logo:</p>
+
+            <h3>Gerador Recomendado:</h3>
+            <ol>
+                <li>Acesse <a href="https://realfavicongenerator.net/" target="_blank">RealFaviconGenerator.net</a></li>
+                <li>Faça upload de uma imagem do logo (PNG com fundo transparente, mínimo 260x260px)</li>
+                <li>A ferramenta gerará automaticamente todos os tamanhos</li>
+                <li>Baixe o pacote completo</li>
+                <li>Copie apenas estes arquivos para <code>src/main/resources/static/img/</code>:
+                    <ul>
+                        <li>favicon-16x16.png</li>
+                        <li>favicon-32x32.png</li>
+                        <li>apple-touch-icon.png</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Alternativas:</h3>
+            <ul>
+                <li><a href="https://favicon.io/" target="_blank">Favicon.io</a> - Gera favicons de texto, emoji ou imagem</li>
+                <li><a href="https://www.favicon-generator.org/" target="_blank">Favicon Generator</a> - Simples e direto</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Adiciona um botão para facilitar o download
+        const ogImage = document.getElementById('og-image');
+        const button = document.createElement('button');
+        button.textContent = '📥 Dica: Pressione F11 para tela cheia, depois tire um screenshot!';
+        button.style.cssText = `
+            display: block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            font-size: 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            font-weight: 600;
+        `;
+        button.onmouseover = () => button.style.background = '#5568d3';
+        button.onmouseout = () => button.style.background = '#667eea';
+
+        ogImage.parentElement.insertBefore(button, ogImage.nextSibling);
+    </script>
+</body>
+</html>

@@ -21,7 +21,7 @@ import nograu.site.bikefit.service.MarkdownService;
 import nograu.site.mapper.BikeFitMapper;
 
 @Controller
-@RequestMapping("/bikefit")
+@RequestMapping({ "/", "/bikefit" })
 public class BikeFitControllerWeb {
 
     private BikeFitService bikeFitService;
@@ -41,6 +41,22 @@ public class BikeFitControllerWeb {
     public String index(ModelMap model) {
         model.addAttribute("quantidadeCalculosHoje", bikeFitService.quantidadeCalculosHoje());
         model.addAttribute("bikefit", new BikeFit());
+
+        // Meta tags SEO
+        model.addAttribute("metaDescription",
+                messageSource.getMessage("meta.description.bikefit", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("metaKeywords",
+                messageSource.getMessage("meta.keywords.bikefit", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("metaOgTitle",
+                messageSource.getMessage("meta.og.title.bikefit", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("metaOgDescription",
+                messageSource.getMessage("meta.og.description.bikefit", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("metaTwitterTitle",
+                messageSource.getMessage("meta.og.title.bikefit", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("metaTwitterDescription",
+                messageSource.getMessage("meta.og.description.bikefit", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("canonicalUrl", "https://www.nograu.com.br/bikefit");
+
         return "bikefit/index";
     }
 
@@ -127,7 +143,14 @@ public class BikeFitControllerWeb {
     }
 
     @GetMapping("/exibir-resultado")
-    public String exibirResultado() {
+    public String exibirResultado(ModelMap model) {
+        // Meta tags SEO para página de resultado
+        model.addAttribute("metaDescription",
+                messageSource.getMessage("meta.description.bikefit.resultado", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("metaKeywords",
+                messageSource.getMessage("meta.keywords.bikefit.resultado", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("canonicalUrl", "https://www.nograu.com.br/bikefit/exibir-resultado");
+
         return "bikefit/resultado";
     }
 

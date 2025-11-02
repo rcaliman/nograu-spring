@@ -21,7 +21,7 @@ import nograu.site.pcd.service.EmprestimoService;
 import nograu.site.pcd.service.FileDownloadService;
 
 @Controller
-@RequestMapping({"/pcd", "/pcd/"})
+@RequestMapping({ "/pcd", "/pcd/" })
 public class EmprestimoControllerWeb {
 
     private EmprestimoService emprestimoService;
@@ -52,6 +52,22 @@ public class EmprestimoControllerWeb {
         fileDownloadService.atualizaBancos();
         model.addAttribute("contador", emprestimoService.contaCalculos());
         model.addAttribute("dataArquivo", bancoService.dataPrimeiroRegistro());
+
+        // Meta tags SEO
+        model.addAttribute("metaDescription",
+                messageSource.getMessage("meta.description.pcd", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("metaKeywords",
+                messageSource.getMessage("meta.keywords.pcd", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("metaOgTitle",
+                messageSource.getMessage("meta.og.title.pcd", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("metaOgDescription",
+                messageSource.getMessage("meta.og.description.pcd", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("metaTwitterTitle",
+                messageSource.getMessage("meta.og.title.pcd", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("metaTwitterDescription",
+                messageSource.getMessage("meta.og.description.pcd", null, LocaleContextHolder.getLocale()));
+        model.addAttribute("canonicalUrl", "https://www.nograu.com.br/pcd");
+
         return "pcd/index";
     }
 
@@ -72,7 +88,7 @@ public class EmprestimoControllerWeb {
             var emprestimoSalvo = emprestimoService.gravar(emprestimoCalculado);
             attr.addFlashAttribute("emprestimo", emprestimoService.emprestimoToDto(emprestimoSalvo));
             return "redirect:/pcd/resultado";
-            
+
         } catch (Exception e) {
             attr.addFlashAttribute("erro", e.getMessage());
             attr.addFlashAttribute("emprestimo", request);
